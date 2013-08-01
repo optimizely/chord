@@ -1,21 +1,23 @@
 Chord - Distributed Hash Table
 ==============================
 
-[Chord] [1] is a self-organizing distributed hash table. This is an implementation of the Chord
+[Chord](http://pdos.csail.mit.edu/papers/chord:sigcomm01/chord_sigcomm.pdf)
+is a self-organizing distributed hash table. This is an implementation of the Chord
 algorithm in Node.js. It provides the ability to construct a Chord cluster and to
-route application layer messages to a process responsible
+route application layer messages to a process responsible for a range of keys.
 
 It supports virtual nodes and uses UDP as its out-of-process transport layer.
 
-# API
+API
+---
 
-## chord.hash(string)
+### chord.hash(string)
 
 Occasionally, you may wish to hash a value the same way that Chord does. It currently
 uses Murmurhash3-128, but `hash` will always expose the current hash algorithm.
 
-## chord.Chord(listen_port, virtual_node_count, node_to_join, on_message)
-## chord.Chord(listen_port, virtual_node_count, on_message)
+### chord.Chord(listen_port, virtual_node_count, node_to_join, on_message)
+### chord.Chord(listen_port, virtual_node_count, on_message)
 
 The primary entry point for starting a Chord server. The available arguments are:
 
@@ -32,7 +34,7 @@ The returned value is a `send_message` function. The `send_message` function als
     server(...)                     // send a message (see below)
     server.close()                  // stop the server
 
-## send_message(to, id, message, reply_to)
+### send_message(to, id, message, reply_to)
 
 This is the function for sending a new application level message to another node in the
 Chord ring. It takes the following parameters:
@@ -46,9 +48,7 @@ Chord ring. It takes the following parameters:
    their message will be sent to the `reply_to` node. If no `reply_to` is specified, replies
    return to the original sender.
 
-
-
-## chord.Client(on_message, listen_port)
+### chord.Client(on_message, listen_port)
 
 The client is intended to provide an easy way to have non-members of the Chord ring
 communicate with members of the Chord ring. This is useful if, for example, members of the
@@ -61,7 +61,7 @@ it has all of the machinery necessary to speak the Chord wire protocol to anothe
  * `on_message`: The callback that is notified when a message is received.
  * `listen_port`: The port on which to listen for reply messages.
 
-## on_message(from, id, message, reply)
+### on_message(from, id, message, reply)
 
 Whenever a client or server receives a message, its `on_message` callback is triggered. The callback
 receives a few parameters:
@@ -72,7 +72,7 @@ receives a few parameters:
  * `message`: The application layer message that was received.
  * `reply`: A callback for sending a reply message (see below).
 
-## reply(message, to, reply_to)
+### reply(message, to, reply_to)
 
 Send a message to source (or `reply_to`) of a received message.
 
@@ -110,4 +110,4 @@ messages will be delivered the node that owns a particular key at that time. Not
 nodes leaving an joining, the node that owns a particular key may change over time. Your application
 should be designed to expect this.
 
-[1] http://pdos.csail.mit.edu/papers/chord:sigcomm01/chord_sigcomm.pdf "Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications"
+[1]  "Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications"
