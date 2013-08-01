@@ -1,0 +1,33 @@
+{
+    "name": "chord",
+    "version": "0.1.0",
+    "description": "Chord Distributed Hash Table",
+    "licenses": [
+        {
+            "name": "MIT",
+            "url": "http://opensource.org/licenses/mit-license.php"
+        }
+    ],
+    "author": "Optimizely, Inc.",
+    "contributors": [
+        {
+            "name": "Brian Ollenberger",
+            "email": "brian@optimizely.com",
+            "web": "https://www.github.com/bollenberger"
+        }
+    ],
+    "main": "chord.js",
+    "scripts": {
+        "test": "vows tests.js"
+    },
+    "dependencies": {
+        "murmurhash3": "0.2.x",
+        "uuid": "1.4.x"
+    },
+    "devDependencies": {
+        "vows": "0.7.x"
+    },
+    "engines": {
+        "node": ">= 0.10.x"
+    }
+}
