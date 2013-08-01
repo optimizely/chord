@@ -20,6 +20,10 @@
     "scripts": {
         "test": "vows tests.js"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/optimizely/chord.git"
+    }
     "dependencies": {
         "murmurhash3": "0.2.x",
         "uuid": "1.4.x"
