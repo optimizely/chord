@@ -1,5 +1,5 @@
-Chord - Distributed Hash Table
-==============================
+Chord Distributed Hash Table
+============================
 
 [Chord](http://pdos.csail.mit.edu/papers/chord:sigcomm01/chord_sigcomm.pdf)
 is a self-organizing distributed hash table. This is an implementation of the Chord
@@ -109,5 +109,3 @@ All 20 virtual nodes will talk amongst themselves to arrange themselves in a rin
 messages will be delivered the node that owns a particular key at that time. Note that due to
 nodes leaving an joining, the node that owns a particular key may change over time. Your application
 should be designed to expect this.
-
-[1]  "Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications"
